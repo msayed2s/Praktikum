@@ -1,0 +1,29 @@
+\section{Aufgaben}\label{sec:aufgaben}
+
+\subsection{Hintergrund/Motivation }
+
+Hergestellt durch das Softwareunternehmen SPSS inc, verwendet uzbonn für die Durchführung von computergestützten telefonischen Interviews (Computer Assisted Telephone Interview, kurz: CATI) die Software Quancept CATI v7.8. Diese Software ermöglicht über in C geschriebene Module vielseitige Möglichkeiten zur Anpassung. Auch die Anbindung eines sogenannten Autodialers inklusive zusätzlicher Algorithmen zum Predictive Dialing, also zur algorithmischen Vorhersage der verfügbaren Telefonverbindung, sind in dem Programmpaket beinhaltet. Ein Autodialer ist eine Software, die das Anwählen der Telefonnummern übernimmt und diese dann nach bestimmten Kriterien einem Interviewer zuteilt, sodass beispielsweise die am längsten Wartenden bevorzugt bedient werden. Ein Autodialer wäre darüber hinaus in der Lage bestimmte Zustände von Telefonverbindungen, wie zum Beispiel eine besetzte Leitung oder eine ungültige Rufnummer, zu erkennen und diese als solche zu verbuchen. Der Predictive Dialer ist eine Erweiterung des Autodialers, die es ermöglicht anhand von Erfahrungswerten die Wahrscheinlichkeit verschiedener Zustände von Telefonverbindungen zu berechnen, die anschließend genutzt wird, um mehr Nummern zu wählen als Interviewer verfügbar sind. \\
+
+Die Methoden des Autodialers und des Predictive Dialers werden bei uzbonn aktuell nicht genutzt. Stattdessen kommt eine clientseitige Lösung für das automatische Anwählen zum Einsatz. Dies erfolgt über ein GUI (Graphical User Interface), welches auf Python basiert und von uzbonn selbst entwickelt wurde. Als Telefonanlage wird Freeswitch eingesetzt und Anrufe erfolgen über das SIP Protokoll. Freeswitch bietet eine API, über welche sowohl client- als auch serverseitig Anrufe abgesetzt und Calloutcomes (zum Beispiel besetzte Leitung oder kein Anschluss) verarbeitet werden können. Darüber lässt sich ein automatischer Dialer implementieren, was von uzbonn bereits erfolgreich getestet wurde. Eine testweise Schnittstelle zwischen Quancept CATI und dem in Python geschriebenen Dialer (noch ohne Predictive Dialing) wurde bereits etabliert. Hauptproblem ist noch, dass der Quancept CATI Server in der bisher genutzten Variante singlethreaded läuft und der Dialer bis zu 4 Sekunden benötigen kann, bis eine Rufnummer entweder angerufen oder als ungültig erkannt wurde. In dieser Zeit verarbeitet der CATI-Server keine weiteren Anfragen von Interviewern. 
+
+
+%\subsection{Sonstige Projektinformationen}
+%abc
+\subsection{Projektziele}
+Ziel des Praktikums ist es die vorhandene Dokumentation sowie den vorhandenen Quellcode für die Anbindung eines predictive Dialers sichten und nach Möglichkeit eine multithreading fähige Schnittstelle zwischen Quancept CATI und dem bereits vorhandenen Python-Dialer etablieren. Sollte sich dies als nicht machbar erweisen, z.B. weil die Dokumentation des Herstellers unvollständig ist oder bestimmte Konfigurationsdateien / Komponenten, die normalerweise vom Hersteller kommen, nicht vorliegen, so soll als sekundäres Ziel der Autodialer direkt in das Interviewer GUI integriert werden, um den Anrufprozess weiter zu automatisieren und Interviewern die manuelle Erfassung von bestimmten Calloutcomes (wie ungültige Rufnummer oder Besetzt) abzunehmen. Die grundsätzliche Machbarkeit des sekundären Ziels wurde bereits nachgewiesen.  
+
+%
+%\subsubsection{Abkürzungen}
+%\glsxtrshort{but} (\glsxtrlong{but})\\
+%\glsxtrshort{cdma} (\glsxtrlong{cdma})\\
+%\glsxtrshort{gsm} (\glsxtrlong{gsm})\\
+%\glsxtrshort{ic} (\glsxtrlong{ic})\\
+%\glsxtrshort{lh2} (\glsxtrlong{lh2})\\
+%\glsxtrshort{lox} (\glsxtrlong{lox})\\
+%\glsxtrshort{na} (\glsxtrlong{na})\\
+%\glsxtrshort{nad+} (\glsxtrlong{nad+})\\
+%\glsxtrshort{nua} (\glsxtrlong{nua})\\
+%\glsxtrshort{tdma} (\glsxtrlong{tdma})\\
+%\glsxtrshort{ua} (\glsxtrlong{ua})\\
+
+

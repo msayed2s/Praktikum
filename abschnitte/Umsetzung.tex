@@ -1,0 +1,20 @@
+\section{Umsetzung }\label{sec:umsetzung}
+
+\subsection{Allgemeine Voraussetzungen}
+Die zu analysierende Dokumentation ist ausschließlich auf Englisch verfügbar, daher sind gute Kenntnisse der englischen Sprache essentiell. Zudem laufen alle Server im uzbonn mit dem Betriebssystem Linux Ubuntu. Daher war auch ein sicherer Umgang mit der Unix-Shell Voraussetzung für das erfolgreiche Arbeiten. Die Projektaufgabe konnte sowohl in Phyton als auch in C gelöst werden. Da im Unternehmen ausschließlich in Python programmiert wird, war die Wahl dieser Programmiersprache naheliegender, um das Bearbeiten in Zukunft leichter zu gestalten. Als Entwicklungsumgebung wurde überwiegend PyCharm, aber auch häufig Visual Studio Code genutzt.
+
+\subsection{Tools und Datenbeschaffung}
+\subsubsection{Quantcept CATI}
+
+uzbonn nutzt für die Durchführung von computergestützten telefonischen Interviews die Software Quancept CATI v7.8 (ursprünglich von SPSS inc). Computer Assisted Telephone Interview (CATI) ist ein bekanntes Vorgehen bei der Durchführung von Umfragen und bezeichnet die Unterstützung des telefonischen Interviews mit Hilfe des Computers. Es erleichtert die Abwicklung von Telefonumfragen, indem das CATI-System die Verwaltung der zu tätigenden Rufnummern übernimmt. Das System kommuniziert direkt mit der Telefonanlage, sodass es auch Telefonate veranlassen kann. Die Verwaltung beinhaltet mehrere Funktionalitäten, wie zum Beispiel das Erstellen von Terminen für den Fall, dass die Zielperson nicht direkt zu erreichen ist. Weiterhin bietet es Supervisoren die Möglichkeit  während eines Telefonats mitzuhören, um dem Interviewer im Anschluss Verbesserungsvorschläge machen zu können. Außerdem kann das System bei Bedarf Statistiken verschiedener Projekte in Tabellen- und Diagrammformen generieren.
+
+\subsubsection{Dokumentation}
+
+Um ein genaueres Verständnis für die Funktionsweise des Systems zu erlangen, wurde mir die dazugehörige Dokumentation zur Verfügung gestellt. Diese beschreibt die genaue Kommunikation zwischen den einzelnen Komponenten des Systems, sowie die Kommunikation mit der Telefonanlage. Außerdem beschreibt die Dokumentation auch die Funktionsweise des bereits vorhandenen Predictive Dialers. Es schien zunächst so als wären genug Informationen für die Implementierung vorhanden, weshalb das ursprüngliche Ziel einen eigenen multithreading Dialer zu implementieren geändert wurde. (ausführlicher) Das Ziel war nun, den bereits vorhandenen Predictive Dialer zum Laufen zu bringen.
+
+\subsubsection{Python Server}
+
+Als Ersatz für die fehlende Software wurde ein bereits vorhandener Python Server leicht modifiziert, um die Anfragen des CATI-Systems lesen und darauf im Freitextformat antworten zu können. Da in der Dokumentation keine Hinweise auf die erwarteten Antworten zu finden war, wurde zunächst die heuristische Methode „Trial and Error“ gewählt, jedoch stellte sich schnell heraus, dass dieser Ansatz nicht Erfolgsversprechend ist, es schien jedoch so als würde ein gut ausgebauter Server die Anforderungen decken können. Das neue Praktikumsziel bestand nun darin, diesen Server so zu erweitern, dass er ohne menschliche Interaktion Nachrichten empfangen, diese verarbeiten und eine entsprechende Antwort senden kann
+
+\subsubsection{Rest der Dokumentation}
+Mit dem Wissen, dass die Dokumentation unvollständig war, richtete sich mein Unternehmensbetreuer Simon Riek an einen Angestellten der Hersteller der Software mit der Bitte, den fehlenden Teil der Dokumentation zu ergänzen. Der fehlende Teil der Dokumentation beschreibt den Aufbau und die gewollte Funktionalität der Nachrichten sehr genau. Die Nachrichten hatten immer denselben Aufbau und die Antworten wurden in einem ähnlichen Format erwartet, sodass die Automatisierte Antwort der Nachricht nur noch Fleißarbeit war.
